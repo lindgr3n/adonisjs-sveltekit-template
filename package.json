@@ -1,12 +1,19 @@
 {
   "name": "adonisjs-sveltekit-template",
   "version": "0.0.1",
+  "private": true,
   "description": "Basic starter template for adonisjs and sveltekit",
-  "main": "index.js",
   "scripts": {
+    "dev": "pnpm --stream -r run dev",
+    "build": "pnpm --stream -r run build",
+    "clean": "pnpm --stream -r run clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "adonisjs",
+    "sveltekit",
+    "template"
+  ],
   "author": "lindgr3n",
   "license": "MIT"
 }

@@ -1,5 +1,7 @@
 packages:
+  # shared packages between frontend and backend
+  - 'packages/*'
   # adonis
-  - 'backend/*'
+  - 'backend'
   # Sveltekit
-  - 'frontend/*'
+  - 'frontend'
