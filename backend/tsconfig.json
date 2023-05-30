@@ -3,6 +3,7 @@
   "include": ["**/*"],
   "exclude": ["node_modules", "build"],
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,
