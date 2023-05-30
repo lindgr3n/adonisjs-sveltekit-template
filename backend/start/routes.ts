@@ -19,7 +19,25 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import User from 'App/Models/User'
 
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
+})
+
+Route.post('/register', async ({ request, session, response }) => {
+  const email = request.input('email')
+  const password = request.input('password')
+
+  const existingUser = await User.findBy('email', email)
+
+  if (existingUser) {
+    return response.status(409).json({
+      error: 'Email already exist',
+      message: 'The email address provided is already registered',
+    })
+  }
+
+  const user = await User.create({ email, password })
+  return { user: user }
 })
