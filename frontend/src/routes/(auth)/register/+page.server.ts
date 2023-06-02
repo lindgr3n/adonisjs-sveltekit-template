@@ -1,10 +1,10 @@
 import { env } from '$env/dynamic/private';
 import type { PageServerLoad, Actions } from './$types';
-import { error, fail, redirect } from '@sveltejs/kit';
+import { fail } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async function (event) {
-	return {};
-};
+export const load = async function () {
+	return { test: 123, a: 1 };
+} satisfies PageServerLoad;
 
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {

@@ -5,16 +5,18 @@
 
   export let data: PageData
   export let form: ActionData
+
+  console.log(data, form)
 </script>
 
 
-<form action="/register" method="post" >
+<form action="/login" method="post" >
     <input type="text" name="email" id="" value="test@example.com">
-    {#if form?.email}
+    {#if form?.missing}
        Email is required
     {/if}
     <input type="password" name="password" value="password">
-    <button>Registrera</button>
+    <button>Login</button>
     {#if form?.error}
        {form.error}
     {/if}
