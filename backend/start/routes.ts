@@ -41,3 +41,20 @@ Route.post('/register', async ({ request, session, response }) => {
   const user = await User.create({ email, password })
   return { user: user }
 })
+
+Route.post('login', async ({ auth, request, response }) => {
+  const email = request.input('email')
+  const password = request.input('password')
+
+  try {
+    const user = await auth.use('web').attempt(email, password)
+    return response.status(200).json({
+      user,
+    })
+  } catch {
+    return response.status(409).json({
+      error: 'Invalid credentials',
+      message: 'Invalid credentials, verify you entered correct email/password',
+    })
+  }
+})
