@@ -58,3 +58,9 @@ Route.post('login', async ({ auth, request, response }) => {
     })
   }
 })
+
+Route.get('/user', async ({ auth, response }) => {
+  return response.status(200).json({
+    user: auth.user,
+  })
+}).middleware('auth')

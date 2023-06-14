@@ -1,6 +1,19 @@
+import { env } from '$env/dynamic/private';
 import type { Handle, HandleFetch } from '@sveltejs/kit';
 
 export const handle = (async ({ event, resolve }) => {
+	if (!event.locals.user) {
+		// Fetch user
+		try {
+			const response = await event.fetch(`${env.BACKEND_URL}/user`);
+			const data = await response.json();
+			event.locals.user = data.user;
+		} catch (error) {
+			//
+			event.locals.user = null;
+		}
+	}
+
 	const response = await resolve(event);
 	return response;
 }) satisfies Handle;

@@ -28,7 +28,9 @@ export const actions = {
 		if (response.ok) {
 			// TODO: Set cookie
 			const cookiesToSet = response.headers.get('set-cookie');
+
 			setResponseCookie(cookies, cookiesToSet);
+			// TODO: Throw redirect to dashboard
 			return {
 				success: true
 			};

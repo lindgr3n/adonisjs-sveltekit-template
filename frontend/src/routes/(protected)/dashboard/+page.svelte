@@ -4,3 +4,6 @@
     export let data: PageData
 </script>
 Dashboard {data.test}
+{#if data.user}
+    User: {data.user.email}
+{/if}
