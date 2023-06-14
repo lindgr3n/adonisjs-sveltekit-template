@@ -71,10 +71,14 @@ Run the migration `node ace migration:run`
 Next up we need to fix the session handling by installing @adonisjs/session `pnpm --filter backend add @adonisjs/session` and configure it `node ace configure @adonisjs/session`
 
 
-Got some strange behaviour using pnpm to install svelte/kit. When installing it installs sveltekit version 1.5 (Same happens when running a fresh npm create svelte@latest my-app). The difference is that pnpm honours the version and installs 1.5 while a standalone installation updates the version in the background and installs 1.20. Ended upp manual updating the version for svelte/kit to 1.20 and reinstall. Found the issue here https://github.com/pnpm/pnpm/issues/6463 why pnpm does this.
+## Thinking out loud
 
-Making a clean install witout pnpm it still set 1.5 in package json but the svelte/kit version installed is 1.20. Need to dig into this more.
-Looks like it depends on the [template](https://github.com/sveltejs/kit/blob/master/packages/create-svelte/templates/default/package.template.json). Need to check this out more. 
+Got some strange behaviour using pnpm to install svelte/kit. When installing it installs sveltekit version 1.5 (Same happens when running a fresh npm create svelte@latest my-app). The difference is that pnpm honours the version and installs 1.5 while a standalone installation updates the version in the background and installs 1.20. Ended upp manual updating the version for svelte/kit to 1.20 and reinstall. 
+
+Making a clean install witout pnpm it still set 1.5 in package json but the svelte/kit version installed is 1.20. Need to dig into this more. Looks like it depends on the [template](https://github.com/sveltejs/kit/blob/master/packages/create-svelte/templates/default/package.template.json). Need to check this out more. 
+
+Found the issue here https://github.com/pnpm/pnpm/issues/6463 why pnpm does this.
+
 
 Think I found the issue. Inside C:\Development\private\adonis\adonisjs-sveltekit-template\frontend\node_modules\@sveltejs\kit\src\core\sync\write_types\index.js and method tweak_types we get an issue with ts.getModifiers is undefined. That is because ts.version = 4.6.2. Same version that adonis have defined in it's pacakge.json. While SvelteKit is using 5.0
 
