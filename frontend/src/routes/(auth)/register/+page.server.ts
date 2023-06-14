@@ -3,7 +3,7 @@ import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
 
 export const load = async function () {
-	return { test: 123, a: 1 };
+	return {};
 } satisfies PageServerLoad;
 
 export const actions: Actions = {
