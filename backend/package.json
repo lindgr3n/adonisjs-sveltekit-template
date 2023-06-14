@@ -9,7 +9,8 @@
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "clean": "rm -rf node_modules"
+    "clean": "rm -rf node_modules",
+    "bootstrap": "npm i"
   },
   "eslintConfig": {
     "extends": [

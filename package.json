@@ -7,6 +7,7 @@
     "dev": "pnpm --stream -r run dev",
     "build": "pnpm --stream -r run build",
     "clean": "pnpm --stream -r run clean",
+    "bootstrap": "pnpm --stream -r run bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
